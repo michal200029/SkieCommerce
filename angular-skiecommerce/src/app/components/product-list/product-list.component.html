@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="secetion-content sectiont-content-p3">
+        <div class="container-fluid">
+            <div class="row">
+                <div *ngFor = "let i of products" class="col-md-3">
+                    <div class="product-box">
+                        <a routerLink ="/products/{{ i.id}}">
+                            <h1><img src="{{ i.imageUrl }}" class="img-responsive"></h1>
+                        </a>
+
+                        <a routerLink ="/products/{{ i.id}}">
+                           <h1> {{ i.brand }} </h1>
+                        </a>
+
+                        <a routerLink ="/products/{{ i.id}}">
+                            <h1>{{ i.name }}</h1>
+                        </a>
+                        <a routerLink ="/products/{{ i.id}}">
+                            <h1>{{ i.unitPrice | currency: 'PLN'}}</h1>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
