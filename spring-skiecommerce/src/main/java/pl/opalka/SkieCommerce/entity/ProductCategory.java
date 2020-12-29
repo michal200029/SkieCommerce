@@ -1,6 +1,8 @@
 package pl.opalka.SkieCommerce.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,6 +21,7 @@ public class ProductCategory {
     @Column(name = "category_name")
     private String categoryName;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Product> products;
 }

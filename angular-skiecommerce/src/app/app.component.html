@@ -2,7 +2,7 @@
 <div class="page-wrapper">
     <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
-            <a href="home.html">
+            <a routerLink="/products">
                 <img src="assets/images/LOGO.PNG" alt="skishop" class="img-responsive" style="width: 300px">
             </a>
         </div>
@@ -15,6 +15,10 @@
                 <div class="container-fluid">
                     <div class="header-wrap">
                         <app-product-search></app-product-search>
+                        <a routerLink ="/cartDetails">
+                            <app-cart-info></app-cart-info>
+                        </a>
+                       
 
                     </div>
                     <div class="account-wrap"></div>

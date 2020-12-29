@@ -122,7 +122,7 @@ a,a:hover{
 }
 
 .main-content{
-    padding-top:116px;
+    padding-top:216px;
     min-height:100vh
 }
 
@@ -547,8 +547,8 @@ input.au-input.au-input-xl{
 }
 .price{
     margin:15px 0 0;
-    font-weight:800;
-    color:#0da8e4
+    font-weight:500;
+    color: #990066
 }
 .product-box h1{
     font-size:18px;
@@ -722,8 +722,8 @@ table.table.table-bordered th{
 
  .price{
     margin:15px 0 0;
-    font-weight:800;
-    color:#0da8e4
+    font-weight:600;
+    color: #990066
 }
 
 .detail-section{

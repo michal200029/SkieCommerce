@@ -1,6 +1,7 @@
 package pl.opalka.SkieCommerce.dao;
 
 
+import org.springframework.data.jpa.repository.Query;
 import pl.opalka.SkieCommerce.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,9 +17,11 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pageable);
-    Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pageable);
-   //List <Product> findAll();
+    Page<Product> findByCategoryId(@RequestParam("id") Long id,Pageable pageable);
+    Page<Product> findByNameContaining(@RequestParam("name") String name,Pageable pageable);
+    List<Product> findAll();
+    @Query(value = "SELECT DISTINCT p.name FROM Product p")
+    List<String> findDistinctByName();
 
 
 }

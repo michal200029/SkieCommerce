@@ -1,23 +1,61 @@
-<div class="container">
+<div class="main-container">
     <div class="secetion-content sectiont-content-p3">
         <div class="container-fluid">
-            <div class="row">
-                <div *ngFor = "let i of products" class="col-md-3">
-                    <div class="product-box">
-                        <a routerLink ="/products/{{ i.id}}">
-                            <h1><img src="{{ i.imageUrl }}" class="img-responsive"></h1>
-                        </a>
+            <div class="row" style="padding-top:85px">
 
-                        <a routerLink ="/products/{{ i.id}}">
-                           <h1> {{ i.brand }} </h1>
-                        </a>
 
-                        <a routerLink ="/products/{{ i.id}}">
-                            <h1>{{ i.name }}</h1>
-                        </a>
-                        <a routerLink ="/products/{{ i.id}}">
-                            <h1>{{ i.unitPrice | currency: 'PLN'}}</h1>
-                        </a>
+                <div *ngFor="let i of products" class="col-md-3">
+
+                    <div class="product-box" >
+                        <div appDetails [product]="i">
+                            <a routerLink="/products/{{ i.id}}">
+                                <img src="{{ i.imageUrl }}" class="img-responsive">
+
+                                <h1>Brand: {{ i.brand }} </h1>
+                                <h1>Model: {{ i.name }}</h1>
+                                <h1>Condition: {{ i.condition }}</h1>
+                                <h1>Size: {{ i.size }}</h1>
+                            </a>
+                        </div>
+                      
+                        <div class="price ">{{ i.unitPrice | currency: 'PLN '}}</div>
+                        <button (click)="addToCart(i)" class="btn btn-primary btn-sm">Add to cart</button>
+                    </div>
+                </div>
+
+                <div *ngIf="products.length==0" class="alert alert-warning col-md-12" role="alert">
+                    No products found.
+                </div>
+            </div>
+
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6"></div>
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-left: 30%">
+
+                                <!-- <ngb-pagination
+                                        ([page])="currentPage"
+                                        [pageSize]="pageSize"
+                                        [collectionSize]="totalElements">
+                                    </ngb-pagination> -->
+
+
+                            </div>
+
+                            <div class="col-md-3 mt-2" style="text-align: right;">
+                                <span class="mr-2">Page Size</span>
+                                <select (change)="updatePage($event)">
+                                    <option>3</option>
+                                    <option selected="true">10</option>
+                                    <option>15</option>
+                                    <option>20</option>
+                                    <option>30</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

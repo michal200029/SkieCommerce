@@ -9,4 +9,5 @@ export class Product {
     unitsInStock!: number;
     special!: string;
     imageUrl!: string;
+    productKey!: string;
 }
