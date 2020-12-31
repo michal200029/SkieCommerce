@@ -36,7 +36,7 @@ export class CartService {
 
   decrementQuantity(item: CartItem){
     item.quantity--;
-    if(item.quantity==0){
+    if(item.quantity<=0){
       this.remove(item);
     }else
       this.compute()
@@ -44,7 +44,7 @@ export class CartService {
 
   remove(item){
     const itemToDeleteID = this.productsInCart.findIndex(searching => searching.id === item.id);
-    if(itemToDeleteID > 0){
+    if(itemToDeleteID > -1){
       this.productsInCart.splice(itemToDeleteID,1);
       this.compute();
     }

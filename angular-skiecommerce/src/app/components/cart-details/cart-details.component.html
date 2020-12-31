@@ -46,14 +46,14 @@
                         <td style="font-weight: bold">
                             <p>Total Quantity: {{ totalQuantity }}</p>
                             <p>Shipping : FREE </p>
-                            <p>Total Amount : {{ totalValue.toFixed(2)  }} </p>
-                            <a class="btn btn-primary">Checkout!</a>
+                            <p>Total Amount : {{ totalValue | currency: 'PLN ' }} </p>
+                            <a  routerLink="/checkout" class="btn btn-primary">Checkout!</a>
                         </td>
                     </tr>
                 </table>
             </div>
             <ng-template #emptyCart>
-                <div class="alert alert-warning col-md-12" role="alert">
+                <div  class="alert alert-warning col-md-12" role="alert">
                     Your cart is empty!
                 </div>
             </ng-template>

@@ -7,17 +7,14 @@
                 <div *ngFor="let i of products" class="col-md-3">
 
                     <div class="product-box" >
-                        <div appDetails [product]="i">
-                            <a routerLink="/products/{{ i.id}}">
-                                <img src="{{ i.imageUrl }}" class="img-responsive">
-
+                        <div appDetails [product]="i"  [categoryId]="currentCategoryId">
+                                <img src="{{ i.imageUrl }}" class="img-responsive"> 
+                        </div>
                                 <h1>Brand: {{ i.brand }} </h1>
                                 <h1>Model: {{ i.name }}</h1>
                                 <h1>Condition: {{ i.condition }}</h1>
                                 <h1>Size: {{ i.size }}</h1>
-                            </a>
-                        </div>
-                      
+                                
                         <div class="price ">{{ i.unitPrice | currency: 'PLN '}}</div>
                         <button (click)="addToCart(i)" class="btn btn-primary btn-sm">Add to cart</button>
                     </div>
@@ -36,11 +33,11 @@
                         <div class="row">
                             <div class="col-md-9" style="padding-left: 30%">
 
-                                <!-- <ngb-pagination
+                                 <ngb-pagination
                                         ([page])="currentPage"
                                         [pageSize]="pageSize"
                                         [collectionSize]="totalElements">
-                                    </ngb-pagination> -->
+                                </ngb-pagination> 
 
 
                             </div>

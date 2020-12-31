@@ -11,6 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartDetailsComponent implements OnInit{
 
   totalQuantity!: number;
+  finalValue: number ;
   totalValue!: number;
   itemsInCart: CartItem[] = [];
   constructor(private cartService: CartService,
@@ -27,8 +28,9 @@ export class CartDetailsComponent implements OnInit{
 
     this.cartService.totalQuantity.subscribe(
       data => { this.totalQuantity = data;})
-    
   }
+    
+  
 
   decrementQuantity(item: CartItem){
     this.cartService.decrementQuantity(item);

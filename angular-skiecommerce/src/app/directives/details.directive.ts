@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 import { Product } from '../classes/product';
 
 
@@ -8,23 +8,31 @@ import { Product } from '../classes/product';
 export class DetailsDirective {
 
   private window; //<p>
-  private windowCopy; //<p>
   @Input()
-  public product!: Product;
+  public product: Product;
+  @Input()
+  public categoryId: number;
   constructor(private el: ElementRef, private renderer: Renderer2) { 
     this.window = this.renderer.createElement('p');
   }
   
+  
   @HostListener(`mouseenter`)
   showDetials(){
-  
+    
+    if(this.categoryId==1){
     this.window.innerHTML = 
-      //"Brand : " + this.product.brand  + "<br/>" +
-      //"Model : " + this.product.name + "<br/>" +
-     // "Condition : " + this.product.condition + "<br/>" +
-     // "Size : " + this.product.size + "<br/>" +
       "Radius : " + this.product.special + "<br/>" +
       "Units in stock : " + this.product.unitsInStock;
+    }else if(this.categoryId==2){
+      this.window.innerHTML = 
+      "Flex : " + this.product.special + "<br/>" +
+      "Units in stock : " + this.product.unitsInStock;
+    }else     {
+      this.window.innerHTML = 
+      "Units in stock : " + this.product.unitsInStock;
+    }
+    
 
    // this.el.nativeElement.innerHTML = "";
     this.renderer.setStyle(this.window, 'background-color','#FFDFDD' );

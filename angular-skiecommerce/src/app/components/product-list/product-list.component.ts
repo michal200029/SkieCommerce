@@ -66,7 +66,7 @@ export class ProductListComponent implements OnInit {
 
   handleSearchListProduct(){
       const typeWord = String(this.activeRoute.snapshot.paramMap.get('keyword'));
-      this.productService.getSearchedProducts(typeWord).subscribe(
+      this.productService.getSearchedProducts(typeWord,this.currentPage,this.pageSize).subscribe(
         data => { this.products = data })
   }
 
@@ -77,7 +77,7 @@ export class ProductListComponent implements OnInit {
   }
 
   updatePage($event){
-    this.pageSize = $event.target.target;
+    this.pageSize = $event.target.value;
     this.currentPage = 0;
     this.logicalGateway();
   }
