@@ -3,6 +3,7 @@ package pl.opalka.SkieCommerce.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 
 @Entity
@@ -26,7 +27,7 @@ public class Product {
     private String condition;
 
     @Column(name = "unit_price")
-    private double unitPrice;
+    private BigDecimal unitPrice;
 
     @Column(name = "units_in_stock")
     private int unitsInStock;

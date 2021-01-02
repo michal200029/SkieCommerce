@@ -3,6 +3,8 @@ package pl.opalka.SkieCommerce.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="country")
@@ -19,4 +21,6 @@ public class Country {
 
     @Column(name="name")
     private String name;
+
+
 }
