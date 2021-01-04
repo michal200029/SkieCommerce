@@ -4,6 +4,8 @@ package pl.opalka.SkieCommerce.entity;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "delivery_method")
@@ -18,4 +20,8 @@ public class ShippingMethod {
 
     @Column(name = "deliveryMethodName")
     private String name;
+
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "shippingMethod")
+    private Set<OrderDetail> orderDetails = new HashSet<>();
+
 }

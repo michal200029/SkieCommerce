@@ -1,10 +1,13 @@
 package pl.opalka.SkieCommerce.dto;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Data
+@Getter
+@Setter
 public class PurchaseResponse {
-    private String orderTrackingNumber;
+    private final String orderTrackingNumber;
 
-    public PurchaseResponse(String orderTrackingNumber) {
-        this.orderTrackingNumber = orderTrackingNumber;
-    }
 }

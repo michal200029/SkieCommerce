@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "payment_method")
@@ -18,4 +20,8 @@ public class PaymentMethod {
 
     @Column(name = "paymentMethodName")
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paymentMethod")
+    private Set<OrderDetail> orderDetails = new HashSet<>();
+
 }

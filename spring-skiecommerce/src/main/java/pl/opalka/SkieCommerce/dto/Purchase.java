@@ -2,10 +2,7 @@ package pl.opalka.SkieCommerce.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.opalka.SkieCommerce.entity.Address;
-import pl.opalka.SkieCommerce.entity.Customer;
-import pl.opalka.SkieCommerce.entity.OrderDetail;
-import pl.opalka.SkieCommerce.entity.OrderItem;
+import pl.opalka.SkieCommerce.entity.*;
 
 import java.util.Set;
 
@@ -15,6 +12,8 @@ public class Purchase {
     private Customer customer;
     private Address billingAddress;
     private Address shippingAddress;
-    private Set<OrderItem> orderItem;
-    private OrderDetail orderDetail;
+    private Set<OrderItem> orderItems;
+    private OrderDetail orderInfo;
+    private PaymentMethod paymentMethod;
+    private ShippingMethod shippingMethod;
 }

@@ -1,9 +1,12 @@
 package pl.opalka.SkieCommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -43,7 +46,6 @@ public class Product {
 
     @Column(name = "product_key")
     private String productKey;
-
 
     @ManyToOne
     @JoinColumn(name = "category_id")

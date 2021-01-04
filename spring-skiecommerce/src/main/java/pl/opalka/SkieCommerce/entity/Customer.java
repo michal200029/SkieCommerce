@@ -3,8 +3,6 @@ package pl.opalka.SkieCommerce.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -12,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "customer")
+@Table(name="customer")
 @Getter
 @Setter
 public class Customer {
@@ -34,19 +32,20 @@ public class Customer {
     @Email
     private String email;
 
-    @Column(name="phoneNumer")
-    @Length(min = 9)
+    @Column(name="phoneNumber")
     private int phoneNumber;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    private Set<OrderDetail> orderDetails = new HashSet<>();
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.MERGE)
+    private Set<OrderDetail> orders = new HashSet<>();
 
-    public void addNewOrderDetial(OrderDetail orderDetail){
-        if(orderDetail != null){
-            if(orderDetails == null)
-                orderDetails = new HashSet<>();
-            orderDetails.add(orderDetail);
-            orderDetail.setCustomer(this);
+    public void add(OrderDetail order) {
+
+        if (order != null) {
+            if (orders == null) {
+                orders = new HashSet<>();
+            }
+            orders.add(order);
+            order.setCustomer(this);
         }
     }
 

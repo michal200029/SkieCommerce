@@ -1,5 +1,6 @@
 package pl.opalka.SkieCommerce.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
 @Entity(name = "order_item")
 @Getter
 @Setter
+@Data
 public class OrderItem {
 
     @Id
@@ -29,6 +31,6 @@ public class OrderItem {
     private Long productId;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "orderdetail_id")
     private OrderDetail orderDetail;
 }

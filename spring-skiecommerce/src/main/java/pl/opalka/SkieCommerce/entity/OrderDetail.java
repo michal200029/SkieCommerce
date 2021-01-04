@@ -37,6 +37,9 @@ public class OrderDetail {
     @CreationTimestamp
     private Date dateCreated;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderDetail")
+    private Set<OrderItem> orderItems = new HashSet<>();
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -49,17 +52,23 @@ public class OrderDetail {
     @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
     private Address billingAddress;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderDetail")
-    private Set<OrderItem> orderItems = new HashSet<>();
+    public void add(OrderItem item) {
 
-    public void addNewItem(OrderItem item){
-        if(item != null){
-            if(orderItems == null )
+        if (item != null) {
+            if (orderItems == null) {
                 orderItems = new HashSet<>();
+            }
             orderItems.add(item);
             item.setOrderDetail(this);
         }
     }
 
+    @ManyToOne
+    @JoinColumn(name = "delivery_method_id")
+    private ShippingMethod shippingMethod;
+
+    @ManyToOne
+    @JoinColumn(name = "payment_method_id")
+    private PaymentMethod paymentMethod;
 
 }
